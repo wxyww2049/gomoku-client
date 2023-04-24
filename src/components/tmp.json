@@ -1,7 +1,35 @@
 
-{
-    "code":3,
-    "data":{
-        "name":"testName"
+[
+    {
+        "name":"testName",
+        "id":"b0c7038d-f450-4f8e-a256-9792ee3747c2",
+        "msg":null,
+        "steps":null,
+        "owner": {
+            "name":"unNamed",
+            "id":"77d48e26-45dc-4149-a5f1-4c5ff1e73a5d",
+            "role":"",
+            "color":-1,
+            "ready":false
+        },
+        "player":null,
+        "status":0,
+        "chess_board":null
+    },
+    {
+        "name":"unNamed的房间",
+        "id":"a95e6d26-1f98-47c0-bfcf-65bcfe791a41",
+        "msg":null,
+        "steps":null,
+        "owner":{
+            "name":"unNamed",
+            "id":"77d48e26-45dc-4149-a5f1-4c5ff1e73a5d",
+            "role":"",
+            "color":-1,
+            "ready":false
+        },
+        "player":null,
+        "status":0,
+        "chess_board":null
     }
-}
+]

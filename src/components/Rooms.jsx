@@ -1,7 +1,11 @@
-import { Box, Button, Paper, TextField, Typography } from "@mui/material";
-import React from "react";
+import { Box, Button, TextField, Typography } from "@mui/material";
+import React, { useContext } from "react";
+import RoomCard from "./RoomCard";
+import { roomsContext } from "../App";
 
 export default function Rooms() {
+  const rooms = useContext(roomsContext);
+
   return (
     <Box
       sx={{
@@ -10,14 +14,12 @@ export default function Rooms() {
         alignItems: "center",
       }}
     >
-      <Paper
+      <Box
         sx={{
           marginTop: "20px",
-          width: "80%",
-          minWidth: "800px",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
-          // alignItems: "center",
           padding: "20px",
         }}
         elevation={3}
@@ -27,12 +29,19 @@ export default function Rooms() {
           sx={{
             marginTop: "20px",
             display: "flex",
-            flexDirection: "row",
+            flexDirection: "column",
             alignItems: "center",
-            // justifyContent: "center",
+            padding: "20px",
           }}
-        ></Box>
-      </Paper>
+        >
+          {rooms.rooms.map((room) => {
+            return <RoomCard room={room} />;
+          })}
+          {rooms.rooms.length === 0 ? (
+            <Typography variant="h6">暂无房间</Typography>
+          ) : null}
+        </Box>
+      </Box>
     </Box>
   );
 }

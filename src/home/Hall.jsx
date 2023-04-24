@@ -5,13 +5,28 @@ import Rooms from "../components/Rooms";
 
 export default function Hall() {
   return (
-    <div>
-      <Box>
-        <JoinGame />
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Box
+        sx={{
+          width: "80%",
+          minWidth: "800px",
+          maxWidth: "1500px",
+        }}
+      >
+        <Box sx={{ marginTop: 6 }}>
+          <JoinGame />
+        </Box>
+        <Box>
+          <Rooms />
+        </Box>
       </Box>
-      <Box>
-        <Rooms />
-      </Box>
-    </div>
+    </Box>
   );
 }

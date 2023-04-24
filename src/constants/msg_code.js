@@ -1,0 +1,10 @@
+export const Fail = -1
+export const ExitRoom = 1
+export const EnterRoom = 2
+export const CreateRoom = 3
+export const DelRoom = 4
+export const Connect = 5
+export const DisConnect = 6
+export const GetAllPlayers = 7
+export const GetAllRoom = 8
+export const PlayerRename = 9
