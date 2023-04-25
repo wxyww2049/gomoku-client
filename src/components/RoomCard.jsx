@@ -38,14 +38,12 @@ export default function RoomCard(props) {
           <strong>{room.name}</strong>
         </Typography>
         <Box sx={{ marginLeft: 2, marginTop: 2 }}>
-          <Typography fontSize={20}>房主: {room.owner.name}</Typography>
+          <Typography fontSize={20}>房主：{room.owner.name}</Typography>
           <Typography fontSize={20}>
-            玩家: {room.player ? room.player.name : "无"}
+            玩家：{room.player ? room.player.name : "无"}
           </Typography>
 
-          <Typography sx={{ display: "flex", direction: "row" }} fontSize={20}>
-            状态: <RoomStatus status={room.status} />
-          </Typography>
+          <RoomStatus status={room.status} />
         </Box>
       </Box>
 

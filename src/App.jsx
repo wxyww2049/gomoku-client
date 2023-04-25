@@ -8,9 +8,11 @@ import {
   Connect,
   CreateRoom,
   EnterRoom,
+  ExitRoom,
   Fail,
   GetAllRoom,
   PlayerRename,
+  UpdateRoomAndPlayer,
 } from "./constants/msg_code";
 export const sendContext = createContext();
 export const roomsContext = createContext();
@@ -29,26 +31,26 @@ function MyApp() {
       // setRooms([]);
       switch (msg.code) {
         case Fail:
-          enqueueSnackbar("发生错误", { variant: "error" });
+          enqueueSnackbar(msg.data, { variant: "error" });
           break;
         case GetAllRoom:
           setRooms(msg.data);
           break;
-        case CreateRoom:
-          setCurrentRoom(msg.data);
-          break;
-        case EnterRoom:
-          setCurrentRoom(msg.data);
+        case UpdateRoomAndPlayer:
+          setCurrentRoom(msg.data.room);
+          setInfo(msg.data.info);
           break;
         case PlayerRename:
           setInfo(msg.data);
           break;
         case Connect:
           setInfo(msg.data);
-          // console.log(msg.data);
+          break;
+        case ExitRoom:
+          setCurrentRoom(null);
           break;
         default:
-          enqueueSnackbar("未知的消息", { variant: "error" });
+          enqueueSnackbar("未知的消息类型" + msg.code, { variant: "error" });
           break;
       }
     }

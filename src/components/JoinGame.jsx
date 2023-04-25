@@ -7,7 +7,7 @@ import { useSnackbar } from "notistack";
 export default function JoinGame() {
   const sendMessage = useContext(sendContext);
   const info = useContext(infoContext);
-  const [newName, setNewName] = useState(info.info.name);
+  const [newName, setNewName] = useState(info?.info?.name);
   const [roomName, setRoomName] = useState();
   const { enqueueSnackbar } = useSnackbar();
   const currentRoom = useContext(currentRoomContext);
@@ -51,7 +51,7 @@ export default function JoinGame() {
       >
         <Typography variant="h5">创建房间</Typography>
         <Box flex={1}></Box>
-        <Typography variant="h5">用户名:{info.info.name}</Typography>
+        <Typography variant="h5">用户名:{info?.info?.name}</Typography>
       </Box>
       <Paper
         sx={{

@@ -1,25 +1,31 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 const statusList = [
   {
-    name: " 待加入",
+    name: "等待中",
     color: "green",
   },
   {
-    name: " 待开始",
-    color: "yellow",
+    name: "待开始",
+    color: "#bfbf22",
   },
   {
-    name: " 游戏中",
+    name: "游戏中",
     color: "red",
   },
 ];
 export default function RoomStatus(props) {
-  const staus = props.status;
+  const status = props.status;
 
   return (
-    <Typography color={statusList[staus].color} fontSize={20}>
-      {statusList[staus].name}
+    <Typography sx={{ display: "flex", direction: "row" }} fontSize={20}>
+      状态：
+      <Typography
+        color={statusList[status >= 0 ? status : 0].color}
+        fontSize={20}
+      >
+        {statusList[status >= 0 ? status : 0].name}
+      </Typography>
     </Typography>
   );
 }

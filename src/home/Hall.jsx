@@ -15,9 +15,9 @@ export default function Hall() {
     >
       <Box
         sx={{
-          width: "80%",
-          minWidth: "800px",
-          maxWidth: "1500px",
+          width: "100%",
+          // minWidth: "800px",
+          // maxWidth: "1500px",
         }}
       >
         <Box sx={{ marginTop: 6 }}>
