@@ -1,8 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Tooltip, Typography } from "@mui/material";
 import React, { useContext, useEffect } from "react";
 import RoomStatus from "../components/RoomStatus";
 import Chess from "../components/Chess";
-import { currentRoomContext, infoContext } from "../App";
+import { currentRoomContext, infoContext, sendContext } from "../App";
+import { StartGame } from "../constants/msg_code";
 const NullPeople = () => {
   return (
     <Typography fontSize={20} color="red">
@@ -10,6 +11,7 @@ const NullPeople = () => {
     </Typography>
   );
 };
+
 export default function RoomSideBar(props) {
   const { room } = props;
   const { info } = useContext(infoContext);
@@ -17,6 +19,15 @@ export default function RoomSideBar(props) {
     console.log("newInfo", info);
   }, [info]);
   const { currentRoom } = useContext(currentRoomContext);
+  const { sendMessage } = useContext(sendContext);
+  const startGame = () => {
+    sendMessage(
+      JSON.stringify({
+        code: StartGame,
+      })
+    );
+  };
+
   return (
     <Box fontSize={20}>
       <Box sx={{ marginTop: 3 }}>
@@ -56,6 +67,38 @@ export default function RoomSideBar(props) {
           </>
         ) : (
           <NullPeople />
+        )}
+      </Box>
+
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: 4,
+        }}
+      >
+        {(currentRoom?.winner === 1 || currentRoom?.winner == -1) && (
+          <Box>
+            <Typography fontSize={20} color="red">
+              {currentRoom.winner == 1 ? "黑方胜利" : "白方胜利"}
+            </Typography>
+          </Box>
+        )}
+        {room?.status === 1 && room?.owner?.id === info?.id && (
+          <Button onClick={startGame} size="large" variant="contained">
+            开始游戏
+          </Button>
+        )}
+        {room?.owner?.id !== info?.id && room?.status === 1 && (
+          <Tooltip title="只有房主才能开始游戏">
+            <Box>
+              <Button size="large" variant="contained" disabled>
+                开始游戏
+              </Button>
+            </Box>
+          </Tooltip>
         )}
       </Box>
     </Box>

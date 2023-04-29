@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { ReactComponent as WhiteChess } from "../asserts/svg/stone_-1.svg";
-import { ReactComponent as BlackChess } from "../asserts/svg/stone_1.svg";
+import { ReactComponent as WhiteChess } from "../assets/svg/stone_-1.svg";
+import { ReactComponent as BlackChess } from "../assets/svg/stone_1.svg";
 export default function Chess(props) {
   useEffect(() => {
     console.log(props.color);

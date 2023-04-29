@@ -5,6 +5,8 @@ import { currentRoomContext, sendContext } from "../App";
 import RoomSideBar from "./RoomSideBar";
 import { ExitRoom as exitRoom } from "../constants/msg_code";
 import { enqueueSnackbar } from "notistack";
+import bgimg from "../assets/png/board.png";
+import Board from "../components/Board";
 export default function Room() {
   const { currentRoom } = useContext(currentRoomContext);
   const { sendMessage } = useContext(sendContext);
@@ -37,9 +39,28 @@ export default function Room() {
       </Box>
 
       <Grid container spacing={2}>
-        <Grid item xs={8} md={8} lg={8} sm={12}>
-          <Box>
-            <Paper sx={{ width: "100%", minHeight: "100px" }}></Paper>
+        <Grid item xs={8} md={12} lg={8} sm={12}>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Paper
+              sx={{
+                width: "100%",
+                minHeight: "100px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Box
+                sx={{
+                  background: `url(${bgimg})`,
+                  height: "580px",
+                  width: "580px",
+                  margin: 3,
+                }}
+              >
+                <Board />
+              </Box>
+            </Paper>
           </Box>
         </Grid>
         <Grid item xs={4} md={4} lg={4} sm={12}>
