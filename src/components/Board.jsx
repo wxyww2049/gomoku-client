@@ -4,6 +4,8 @@ import { enqueueSnackbar, useSnackbar } from "notistack";
 import { infoContext, sendContext } from "../App";
 import { currentRoomContext } from "../App";
 import { AddNewChess } from "../constants/msg_code";
+import "./Chess.css";
+import { Box } from "@mui/material";
 const gridWidth = 38,
   NumOfGrid = 15;
 
@@ -134,7 +136,7 @@ export default function Board() {
         });
       })}
 
-      {currentRoom?.steps?.map((val) => {
+      {currentRoom?.steps?.map((val, index) => {
         return (
           <svg
             width={gridWidth - 4}
@@ -142,8 +144,29 @@ export default function Board() {
             y={val.y * gridWidth + 8}
             height={gridWidth - 4}
             viewBox="0 0 44 44"
+            className="single-chess"
+            overflow="visible"
+            // transform="scale(2.0)"
           >
-            <Chess color={val.color} />
+            <g transform="scale(0.5)">
+              <animateTransform
+                attributeType="XML"
+                attributeName="transform"
+                type="scale"
+                from="1.2"
+                to="1"
+                dur="0.2s"
+                begin="0s"
+                fill="freeze"
+                // repeatCount="indefinite"
+              />
+              {/* <circle r="20.51" stroke="red" strokeWidth={3}> */}
+              <Chess
+                color={val.color}
+                last={index == currentRoom.steps.length - 1}
+              />
+              {/* </circle> */}
+            </g>
           </svg>
         );
       })}

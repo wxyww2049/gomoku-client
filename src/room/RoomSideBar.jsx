@@ -81,10 +81,16 @@ export default function RoomSideBar(props) {
       >
         {(currentRoom?.winner === 1 || currentRoom?.winner == -1) && (
           <Box>
-            <Typography fontSize={20} color="red">
+            <Typography variant="h4" color="red">
               {currentRoom.winner == 1 ? "黑方胜利" : "白方胜利"}
             </Typography>
           </Box>
+        )}
+        {currentRoom?.status == 2 && currentRoom.color == info.color && (
+          <Typography variant="h6">你的轮次</Typography>
+        )}
+        {currentRoom?.status == 2 && currentRoom.color != info.color && (
+          <Typography variant="h6">对手的轮次</Typography>
         )}
         {room?.status === 1 && room?.owner?.id === info?.id && (
           <Button onClick={startGame} size="large" variant="contained">
