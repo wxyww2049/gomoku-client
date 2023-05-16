@@ -7,6 +7,7 @@ import { ExitRoom as exitRoom } from "../constants/msg_code";
 import { enqueueSnackbar } from "notistack";
 import bgimg from "../assets/png/board.png";
 import Board from "../components/Board";
+import ChatPart from "../components/ChatPart";
 export default function Room() {
   const { currentRoom } = useContext(currentRoomContext);
   const { sendMessage } = useContext(sendContext);
@@ -25,11 +26,11 @@ export default function Room() {
     <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
       <Box
         sx={{
-          marginTop: 6,
+          marginTop: 2,
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          marginBottom: 6,
+          marginBottom: 3,
         }}
       >
         <IconButton onClick={ExitRoom}>
@@ -45,16 +46,18 @@ export default function Room() {
               sx={{
                 width: "100%",
                 minHeight: "100px",
+                height: "800px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Box
                 sx={{
                   background: `url(${bgimg})`,
-                  height: "580px",
-                  width: "580px",
+                  height: "640px",
+                  width: "640px",
                   margin: 3,
                 }}
               >
@@ -67,13 +70,25 @@ export default function Room() {
           <Box>
             <Paper
               sx={{
+                // marginTop: -10,
                 width: "100%",
-                minHeight: "100px",
-                padding: "20px",
-                paddingLeft: "40px",
+                // minHeight: "100px",
+                padding: "10px 10px 10px 10px",
+                paddingLeft: "30px",
               }}
             >
               <RoomSideBar room={currentRoom} />
+            </Paper>
+            <Paper
+              sx={{
+                marginTop: 3,
+                width: "100%",
+                minHeight: "100px",
+                padding: "10px 10px 10px 10px",
+                paddingLeft: "30px",
+              }}
+            >
+              <ChatPart />
             </Paper>
           </Box>
         </Grid>

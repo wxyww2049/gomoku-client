@@ -11,6 +11,7 @@ import {
   ExitRoom,
   Fail,
   GetAllRoom,
+  InfoMsg,
   PlayerRename,
   UpdateRoomAndPlayer,
 } from "./constants/msg_code";
@@ -48,6 +49,9 @@ function MyApp() {
           break;
         case ExitRoom:
           setCurrentRoom(null);
+          break;
+        case InfoMsg:
+          enqueueSnackbar(msg.data, { variant: "info" });
           break;
         default:
           enqueueSnackbar("未知的消息类型" + msg.code, { variant: "error" });

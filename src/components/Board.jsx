@@ -6,7 +6,7 @@ import { currentRoomContext } from "../App";
 import { AddNewChess } from "../constants/msg_code";
 import "./Chess.css";
 import { Box } from "@mui/material";
-const gridWidth = 38,
+const gridWidth = 42,
   NumOfGrid = 15;
 
 const MyGrid = (props) => {
@@ -93,7 +93,7 @@ export default function Board() {
   };
 
   return (
-    <svg width="580" height="580">
+    <svg width="640" height="640">
       <circle
         cx={6 + 7 * gridWidth + gridWidth / 2}
         cy={6 + 7 * gridWidth + gridWidth / 2}

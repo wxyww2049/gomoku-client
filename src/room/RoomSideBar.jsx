@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react";
 import RoomStatus from "../components/RoomStatus";
 import Chess from "../components/Chess";
 import { currentRoomContext, infoContext, sendContext } from "../App";
-import { StartGame } from "../constants/msg_code";
+import { AdmitDefeat, StartGame } from "../constants/msg_code";
 const NullPeople = () => {
   return (
     <Typography fontSize={20} color="red">
@@ -27,17 +27,24 @@ export default function RoomSideBar(props) {
       })
     );
   };
+  const admitDefeat = () => {
+    sendMessage(
+      JSON.stringify({
+        code: AdmitDefeat,
+      })
+    );
+  };
 
   return (
     <Box fontSize={20}>
-      <Box sx={{ marginTop: 3 }}>
+      <Box sx={{ marginTop: 2 }}>
         <RoomStatus status={room?.status} />
       </Box>
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
-          marginTop: 2,
+          marginTop: 1,
           alignItems: "center",
         }}
       >
@@ -50,7 +57,7 @@ export default function RoomSideBar(props) {
       </Box>
       <Box
         sx={{
-          marginTop: 2,
+          marginTop: 1,
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
@@ -76,7 +83,7 @@ export default function RoomSideBar(props) {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          marginTop: 4,
+          marginTop: 1,
         }}
       >
         {(currentRoom?.winner === 1 || currentRoom?.winner == -1) && (
@@ -105,6 +112,11 @@ export default function RoomSideBar(props) {
               </Button>
             </Box>
           </Tooltip>
+        )}
+        {room?.status === 2 && (
+          <Button size="large" variant="contained" onClick={admitDefeat}>
+            认输
+          </Button>
         )}
       </Box>
     </Box>

@@ -11,3 +11,6 @@ export const PlayerRename = 9
 export const UpdateRoomAndPlayer = 10
 export const StartGame = 11
 export const AddNewChess = 12
+export const AdmitDefeat  = 13
+export const InfoMsg = 14
+export const ChatMsg = 15

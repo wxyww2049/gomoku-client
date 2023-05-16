@@ -19,6 +19,7 @@ export default function Router() {
         <Route path="/" element={<Index />}>
           <Route path="/hall" element={<Hall />} />
           <Route path="/room" element={<Room />} />
+          <Route path="*" element={<Navigate to="/hall" />} />
         </Route>
       </Routes>
     </HashRouter>
